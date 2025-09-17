@@ -1,0 +1,5 @@
+.idea
+pnpm-lock.yaml
+*.js
+*.d.ts
+node_modules

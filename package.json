@@ -1,0 +1,45 @@
+{
+  "name": "@regraf/i18n",
+  "version": "1.0.0",
+  "description": "Internationalization module for Regraf",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/regraf/i18n.git"
+  },
+  "scripts": {
+    "test": "vitest --run"
+  },
+  "keywords": [
+    "i18n",
+    "internationalization",
+    "regraf",
+    "telegram",
+    "bot"
+  ],
+  "author": "Ilya Petrov <me@redguy.ru>",
+  "license": "ISC",
+  "packageManager": "pnpm@10.15.1",
+  "bugs": {
+    "url": "https://github.com/regraf/i18n/issues"
+  },
+  "dependencies": {
+    "debug": "^4.4.3",
+    "regraf": "1.1.0",
+    "rgcache": "^1.3.11"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.12",
+    "@types/node": "^24.5.1",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
