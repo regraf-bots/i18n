@@ -1,12 +1,12 @@
 {
   "name": "@regraf/i18n",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Internationalization module for Regraf",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/regraf/i18n.git"
+    "url": "git+ssh://git@github.com/regraf-bots/i18n.git"
   },
   "scripts": {
     "test": "vitest --run"
@@ -22,7 +22,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.15.1",
   "bugs": {
-    "url": "https://github.com/regraf/i18n/issues"
+    "url": "https://github.com/regraf-bots/i18n/issues"
   },
   "dependencies": {
     "debug": "^4.4.3",
