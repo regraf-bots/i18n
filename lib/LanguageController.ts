@@ -50,7 +50,7 @@ export class LanguageController {
      * If a JSON file path is specified, it is directly loaded into the cache.
      * @return {void} Returns nothing. The language data from valid JSON files is added to the cache.
      */
-    public preloadLanguages(folderOrFile: string): void {
+    public async preloadLanguages(folderOrFile: string): Promise<void> {
         LanguageController.debug("preloadLanguages", folderOrFile);
         if (!fs.existsSync(folderOrFile)) return;
         if (fs.lstatSync(folderOrFile).isDirectory()) {
@@ -60,11 +60,35 @@ export class LanguageController {
         } else {
             if (folderOrFile.endsWith(".json")) {
                 LanguageController.debug("preloadLanguages", folderOrFile, "parsing as JSON language file");
-                this.cache.set(folderOrFile, JSON.parse(fs.readFileSync(folderOrFile, "utf8")));
+                await this.cache.set(this.formatName(folderOrFile), this.flatObject(JSON.parse(fs.readFileSync(folderOrFile, "utf8"))));
             } else {
                 LanguageController.debug("preloadLanguages", folderOrFile, "unknown file type, skipping");
             }
         }
+    }
+
+    private flatObject(obj: any, prefix = ""): any {
+        const result: any = {};
+        for (const key in obj) {
+            if (typeof obj[key] === "object" && obj[key] !== null) {
+                Object.assign(result, this.flatObject(obj[key], prefix + key + "."));
+            } else {
+                result[prefix + key] = obj[key];
+            }
+        }
+        return result;
+    }
+
+    public formatName(name: string) {
+        if(name.includes("/")) {
+            name = name.substring(name.lastIndexOf("/") + 1);
+        }
+
+        if(name.includes(".")) {
+            name = name.substring(0, name.lastIndexOf("."));
+        }
+
+        return name;
     }
 
     public async middleware(ctx: LanguageContext, next: () => Promise<void>) {
